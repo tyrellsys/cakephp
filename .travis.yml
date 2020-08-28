@@ -28,8 +28,9 @@ matrix:
   include:
     - php: 7.2
       env: PREFER_LOWEST=1
+
     - php: nightly
-      env: DB=sqlite DB_URL='sqlite:///:memory:'
+      env: DB=pgsql DB_URL='postgres://postgres@127.0.0.1/cakephp_test'
 
 before_install:
   - echo cakephp version && tail -1 VERSION.txt
@@ -59,7 +60,7 @@ install:
       if [[ $PREFER_LOWEST == 1 ]]; then
         composer update --prefer-lowest --prefer-stable --no-interaction
       elif [[ $TRAVIS_PHP_VERSION == 'nightly' ]]; then
-        composer install --no-interaction --ignore-platform-reqs
+        composer require phpunit/phpunit:^9.3 cakephp/chronos:"dev-2.next as 2.1" --no-interaction --ignore-platform-reqs
       else
         composer install --no-interaction
       fi

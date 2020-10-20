@@ -249,7 +249,7 @@ abstract class Driver implements DriverInterface
     {
         $this->connect();
         if (!$this->_connection->inTransaction()) {
-            return false;
+            throw new \RuntimeException('Should be in transaction');
         }
 
         return $this->_connection->commit();

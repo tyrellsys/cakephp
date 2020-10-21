@@ -1836,6 +1836,7 @@ class Message implements JsonSerializable, Serializable
             'to', 'from', 'sender', 'replyTo', 'cc', 'bcc', 'subject',
             'returnPath', 'readReceipt', 'emailFormat', 'emailPattern', 'domain',
             'attachments', 'messageId', 'headers', 'appCharset', 'charset', 'headerCharset',
+            'textMessage', 'htmlMessage',
         ];
 
         $array = [];
